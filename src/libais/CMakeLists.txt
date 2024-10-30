@@ -1,4 +1,9 @@
-add_library(ais 
+cmake_minimum_required(VERSION 3.16)
+project(ais)
+
+find_package(ament_cmake REQUIRED)
+
+add_library(ais SHARED
 ais.cpp
 ais_bitset.cpp
 ais1_2_3.cpp
@@ -46,6 +51,7 @@ install(TARGETS ais
   PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
-# Not yet handled:
-# ais_py.cpp
-# ais_decode_normed.cpp 
+ament_export_include_directories(include)
+ament_export_libraries(${PROJECT_NAME})
+
+ament_package()
